@@ -244,6 +244,22 @@ view: order_items {
     ;;
   }
 
+  measure: count_conitional_format_image{
+    type: count
+    drill_fields: [order_detail*]
+    html:
+    {% if order_items.item_return_rate._value  <=0.005 %}
+    <p><img src="http://findicons.com/files/icons/573/must_have/48/check.png" height=20 width=20>{{ rendered_value }}</p>
+    {% elsif  order_items.item_return_rate._value <=0.01 %}
+    <p><img src="http://findicons.com/files/icons/1681/siena/128/clock_blue.png" height=20 width=20>{{ rendered_value }}</p>
+    {% else %}
+    <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20>{{ rendered_value }}</p>
+    {% endif %}
+    ;;
+  }
+
+
+
 
   measure: count_customer_return_items{
     description: "Number of users who have returned an item at some point"
@@ -296,5 +312,12 @@ view: order_items {
       users.id,
       users.first_name
     ]
+    }
+
+  set:  order_detail{
+    fields: [ order_id,created_date]
+
+
+
   }
 }
