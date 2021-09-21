@@ -110,7 +110,12 @@ view: order_items {
     {% else %}
       <p><img src="http://findicons.com/files/icons/719/crystal_clear_actions/64/cancel.png" height=20 width=20></p>
     {% endif %}
-;;
+    ;;
+   # link: {
+#
+#      label: "Show details"
+#      url: "https://epam.cloud.looker.com/looks/117[users.state]={{ _filters['users.state'] | url_encode }}&f[orders.date]={{ _filters['orders.date'] | url_encode }}"
+#    }
 
     }
 

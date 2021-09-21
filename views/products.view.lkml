@@ -54,10 +54,11 @@ view: products {
     type: string
     sql: ${TABLE}."SKU" ;;
     action: {
-      label: "Label to Appear in Action Menu"
-      url: "https://example.com/posts"
+      label: "search in google"
+      url: "https://www.google.com/search?q={{ value }}"
       icon_url: "https://looker.com/favicon.ico"
-      form_url: "https://example.com/ping/{{ value }}/form.json"
+      #form_param: {"http://www.google.com/search?q={{ value }}"}
+      #form_url: "https://example.com/ping/{{ value }}/form.json"
       param: {
         name: "name string"
         value: "value string"
