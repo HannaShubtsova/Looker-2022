@@ -179,6 +179,7 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [detail*]
+
   }
 
 
@@ -226,6 +227,23 @@ view: order_items {
     sql: ${count_returns} / ${count} ;;
     value_format_name: percent_2
   }
+
+  measure: count_conitional_format{
+    type: count
+    drill_fields: [detail*]
+    html:
+
+    {% if order_items.item_return_rate._value  <=0.005 %}
+    <p style="color: green;  font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif  order_items.item_return_rate._value <=0.01 %}
+    <p style="color: orange;  font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %}
+
+    ;;
+  }
+
 
   measure: count_customer_return_items{
     description: "Number of users who have returned an item at some point"
