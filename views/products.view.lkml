@@ -26,6 +26,7 @@ dimension: brand {
   action: {
 
     label: "Send to zappier test"
+    icon_url:"https://images.squarespace-cdn.com/content/v1/5dc1ccd7e0292e070ef93a24/1573244994447-PIPZPQJL2BF9HGMEPF1E/Stormboard+and+Zapier?format=1000w"
     url: "https://hooks.zapier.com/hooks/catch/10920976/b654qm1/"
     param: {
       name: "item_id"
