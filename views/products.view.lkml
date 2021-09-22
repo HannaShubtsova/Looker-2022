@@ -9,10 +9,28 @@ view: products {
     sql: ${TABLE}."ID" ;;
   }
 
-  dimension: brand {
-    type: string
-    sql: ${TABLE}."BRAND" ;;
+dimension: brand {
+  sql: TRIM(${TABLE}.brand) ;;
+
+  link: {
+    label: "Website"
+    url: "http://www.google.com/search?q={{ value | encode_uri }}+clothes&btnI"
+    icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
   }
+
+  link: {
+    label: "Facebook"
+    url: "http://www.google.com/search?q=site:facebook.com+{{ value | encode_uri }}+clothes&btnI"
+    icon_url: "https://static.xx.fbcdn.net/rsrc.php/yl/r/H3nktOa7ZMg.ico"
+  }
+
+#  link: {
+#    label: "{{value}} Analytics Dashboard"
+#    url: "/dashboards/thelook::brand_analytics?Brand%20Name={{ value | encode_uri }}"
+#    icon_url: "http://www.looker.com/favicon.ico"
+ # }
+  }
+
 
   dimension: category {
     type: string
@@ -53,12 +71,17 @@ view: products {
   dimension: sku_link_to{
     type: string
     sql: ${TABLE}."SKU" ;;
+    link: {
+      label: "Website"
+      url: "http://www.google.com/search?q={{ value | encode_uri }}+clothes&btnI"
+      icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
+    }
     action: {
-      label: "search in google"
-      url: "https://www.google.com/search?q={{ value }}"
-      icon_url: "https://looker.com/favicon.ico"
 
-  }
+      label: "Send a Thing"
+      url: "https://example.com/ping/{{ value }}"
+      form_url: "https://example.com/ping/{{ value }}/form.json"
+    }
 
     }
 
