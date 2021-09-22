@@ -23,7 +23,15 @@ dimension: brand {
     url: "http://www.google.com/search?q=site:facebook.com+{{ value | encode_uri }}+clothes&btnI"
     icon_url: "https://static.xx.fbcdn.net/rsrc.php/yl/r/H3nktOa7ZMg.ico"
   }
+  action: {
 
+    label: "Send to zappier test"
+    url: "https://hooks.zapier.com/hooks/catch/10920976/b654qm1/"
+    param: {
+      name: "item_id"
+      value: "{{value}}"
+    }
+  }
 #  link: {
 #    label: "{{value}} Analytics Dashboard"
 #    url: "/dashboards/thelook::brand_analytics?Brand%20Name={{ value | encode_uri }}"
@@ -78,9 +86,12 @@ dimension: brand {
     }
     action: {
 
-      label: "Send a Thing"
-      url: "https://example.com/ping/{{ value }}"
-      form_url: "https://example.com/ping/{{ value }}/form.json"
+      label: "Send to zappier"
+      url: "https://hooks.zapier.com/hooks/catch/10920976/b654qm1/"
+      param: {
+        name: "item_id"
+        value: "{{value}}"
+      }
     }
 
     }
