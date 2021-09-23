@@ -95,6 +95,22 @@ dimension: brand {
       }
     }
 
+    action: {
+      label: "Call chatbot"
+      url: "https://hooks.slack.com/services/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"
+      param:
+      {name: "param1"
+      value: "{{value}}"
+      }
+
+      param: {
+      name: "param2"
+      value: "{{order_items.item_return_rate._value}} "
+      }
+
+
+    }
+
     }
 
 
