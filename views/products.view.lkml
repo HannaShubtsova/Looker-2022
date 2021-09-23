@@ -123,6 +123,33 @@ dimension: brand {
           value: "{{order_items.item_return_rate._value}} "
         }
     }
+    action: {
+      label: "Email Promotion to Customer"
+      url: "https://desolate-refuge-53336.herokuapp.com/posts"
+      icon_url: "https://sendgrid.com/favicon.ico"
+      param: {
+        name: "some_auth_code"
+        value: "abc123456"
+      }
+      form_param: {
+        name: "Subject"
+        required: yes
+        default: "Thank you {{ users.name._value }}"
+      }
+      form_param: {
+        name: "Body"
+        type: textarea
+        required: yes
+        default:
+        "Dear {{ users.first_name._value }},
+
+        Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
+        on your next purchase!  Just use the code LOYAL when checking out!
+
+        Your friends at the Look"
+      }
+    }
+
 
     }
 
