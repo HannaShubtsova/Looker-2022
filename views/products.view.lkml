@@ -85,6 +85,7 @@ dimension: brand {
       url: "http://www.google.com/search?q={{ value | encode_uri }}+clothes&btnI"
       icon_url: "http://www.google.com/s2/favicons?domain=www.{{ value | encode_uri }}.com"
     }
+
     action: {
 
       label: "Send to zappier"
@@ -107,8 +108,20 @@ dimension: brand {
       name: "param2"
       value: "{{order_items.item_return_rate._value}} "
       }
+      }
 
+      action: {
+        label: "Call chatbot throgh zappier"
+        url: "https://hooks.slack.com/services/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"
+        param:
+        {name: "param1"
+          value: "{{value}}"
+        }
 
+        param: {
+          name: "param2"
+          value: "{{order_items.item_return_rate._value}} "
+        }
     }
 
     }
