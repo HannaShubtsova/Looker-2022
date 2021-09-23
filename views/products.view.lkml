@@ -112,7 +112,7 @@ dimension: brand {
 
       action: {
         label: "Call chatbot throgh zappier"
-        url: "https://hooks.slack.com/services/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"
+        url: "https://hooks.zapier.com/hooks/catch/10920976/b6q0u7e/silent/"
         param:
         {name: "param1"
           value: "{{value}}"
