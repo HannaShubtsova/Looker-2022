@@ -47,10 +47,10 @@ dimension: brand {
 
   link: {
     label: " Chat"
-    url: "https://epam.cloud.looker.com/extensions/volodymyrd_chat::volodymyrd_chat"
-
-
+    url: "https://epam.cloud.looker.com/extensions/epam_oleksandr_korenev_test1::epam_oleksandr_korenev_ext_test1/?q={{ value | encode_uri }}"
   }
+
+
   }
 
   dimension: cost {
