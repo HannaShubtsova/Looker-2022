@@ -44,6 +44,13 @@ dimension: brand {
   dimension: category {
     type: string
     sql: ${TABLE}."CATEGORY" ;;
+
+  link: {
+    label: " Chat"
+    url: "https://epam.cloud.looker.com/extensions/volodymyrd_chat::volodymyrd_chat"
+
+
+  }
   }
 
   dimension: cost {
