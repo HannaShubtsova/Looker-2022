@@ -165,5 +165,13 @@ dimension: brand {
   measure: count {
     type: count
     drill_fields: [id, name, distribution_centers.name, distribution_centers.id, inventory_items.count]
+    link: {
+      label: "Drill as scatter plot"
+      url: "
+      {% assign vis_config = '{\"type\": \"looker_scatter\"}' %}
+      {{ link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000"
+    }
+
+
   }
 }
