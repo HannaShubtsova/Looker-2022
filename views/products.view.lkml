@@ -153,8 +153,8 @@ dimension: brand {
       }
 
       action: {
-        label: "Call chatbot throgh zappier"
-        url: "https://hooks.zapier.com/hooks/catch/10920976/b6q0u7e"
+        label: "Test webhook Teams"
+        url: "https://epam.webhook.office.com/webhookb2/03f9d947-514d-4fe1-a49a-7fed31b6c754@b41b72d0-4e9f-4c26-8a69-f949f367c91d/IncomingWebhook/1ca1651259a84ba7a890fea9c28eb2f7/74faf3fa-3b71-47bf-90e1-f52774ec7f14"
         param:
         {name: "param1"
           value: "{{value}}"
