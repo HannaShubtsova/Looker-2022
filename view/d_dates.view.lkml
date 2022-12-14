@@ -1,44 +1,98 @@
-view: d_customer {
-  sql_table_name: "DATA_MART"."D_CUSTOMER"
+view: d_dates {
+  sql_table_name: "DATA_MART"."D_DATES"
     ;;
 
-  dimension: c_address {
-    type: string
-    sql: ${TABLE}."C_ADDRESS" ;;
+  dimension_group: date_val {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      day_of_month,
+      month_name
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."DATE_VAL" ;;
   }
 
-  dimension: c_custkey {
+  dimension_group: current_date{
+    type: time
+    timeframes: [
+      year
+    ]
+    sql: getdate() ;;
+  }
+
+  dimension: datekey {
     type: number
-    sql: ${TABLE}."C_CUSTKEY" ;;
+    sql: ${TABLE}."DATEKEY" ;;
   }
 
-  dimension: c_mktsegment {
+  dimension: day_of_week {
     type: number
-    sql: ${TABLE}."C_MKTSEGMENT" ;;
+    sql: ${TABLE}."DAY_OF_WEEK" ;;
   }
 
-  dimension: c_name {
+  dimension: dayname_of_week {
     type: string
-    sql: ${TABLE}."C_NAME" ;;
+    sql: ${TABLE}."DAYNAME_OF_WEEK" ;;
   }
 
-  dimension: c_nation {
+  dimension: month_name {
     type: string
-    sql: ${TABLE}."C_NATION" ;;
+    sql: ${TABLE}."MONTH_NAME" ;;
   }
 
-  dimension: c_phone {
-    type: string
-    sql: ${TABLE}."C_PHONE" ;;
+  dimension: month_num {
+    type: number
+    sql: ${TABLE}."MONTH_NUM" ;;
   }
 
-  dimension: c_region {
-    type: string
-    sql: ${TABLE}."C_REGION" ;;
+  dimension: quarter {
+    type: number
+    sql: ${TABLE}."QUARTER" ;;
+  }
+
+  dimension: year {
+    type: number
+    sql: ${TABLE}."YEAR" ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [c_name]
+    drill_fields: [month_name]
   }
+
+  parameter: date_granularity {
+    type: unquoted
+
+    allowed_value: {
+      label: "Break down by Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Break down by Qarter"
+      value: "quarter"
+    }
+    allowed_value: {
+      label: "Break down by Year"
+      value: "year"
+    }
+  }
+
+  dimension: date_dynamic {
+    sql:
+    {% if date_granularity._parameter_value == 'day' %}
+      ${date_val_date}
+    {% elsif date_granularity._parameter_value == 'month' %}
+      ${date_val_month}
+    {% else %}
+      ${date_val_year}
+    {% endif %};;
+  }
+
 }
