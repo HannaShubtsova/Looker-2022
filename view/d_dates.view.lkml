@@ -86,10 +86,10 @@ view: d_dates {
 
   dimension: date_dynamic {
     sql:
-    {% if date_granularity._parameter_value == 'day' %}
-      ${date_val_date}
-    {% elsif date_granularity._parameter_value == 'month' %}
+    {% if date_granularity._parameter_value == 'month' %}
       ${date_val_month}
+    {% elsif date_granularity._parameter_value == 'quarter' %}
+      ${date_val_quarter}
     {% else %}
       ${date_val_year}
     {% endif %};;

@@ -39,3 +39,5 @@ explore: f_lineitems {
     relationship: many_to_one
   }
 }
+
+explore: test_pdt {}
