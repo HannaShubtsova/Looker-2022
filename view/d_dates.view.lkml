@@ -3,6 +3,7 @@ view: d_dates {
     ;;
 
   dimension_group: date_val {
+    group_label: "Group lablel 3"
     type: time
     timeframes: [
       raw,
@@ -20,6 +21,7 @@ view: d_dates {
   }
 
   dimension_group: current_date{
+    group_label: "Group lablel 3"
     type: time
     timeframes: [
       year
@@ -28,31 +30,38 @@ view: d_dates {
   }
 
   dimension: datekey {
+    group_label: "Group lablel 3"
     type: number
     sql: ${TABLE}."DATEKEY" ;;
   }
 
   dimension: day_of_week {
+    group_label: "Group lablel 3"
+    label: "{{ _view._label }} of week"
     type: number
     sql: ${TABLE}."DAY_OF_WEEK" ;;
   }
 
   dimension: dayname_of_week {
+    group_label: "Group lablel 3"
     type: string
     sql: ${TABLE}."DAYNAME_OF_WEEK" ;;
   }
 
   dimension: month_name {
+    group_label: "Group lablel 3"
     type: string
     sql: ${TABLE}."MONTH_NAME" ;;
   }
 
   dimension: month_num {
+    group_label: "Group lablel 3"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
   }
 
   dimension: quarter {
+    group_label: "Group lablel 3"
     type: number
     sql: ${TABLE}."QUARTER" ;;
   }
@@ -63,11 +72,13 @@ view: d_dates {
   }
 
   measure: count {
+    group_label: "Group lablel 3"
     type: count
     drill_fields: [month_name]
   }
 
   parameter: date_granularity {
+    group_label: "Group lablel 3"
     type: unquoted
 
     allowed_value: {
@@ -85,6 +96,7 @@ view: d_dates {
   }
 
   dimension: date_dynamic {
+    group_label: "Group lablel 3"
     sql:
     {% if date_granularity._parameter_value == 'month' %}
       ${date_val_month}

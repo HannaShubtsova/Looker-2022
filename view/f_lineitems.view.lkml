@@ -1,5 +1,41 @@
+# named_value_format: localized_currency_2 {
+#   #value_format:   "{{ _user_attributes['custom_locale_format_currency'] }}"
+#   value_format:   "$#,##0.00"
+#   strict_value_format: no
+# }
+
 view: f_lineitems {
   sql_table_name: "DATA_MART"."F_LINEITEMS" ;;
+
+
+  ################# TEcH
+
+   measure: number_format_1 {
+   type: sum
+   hidden: no
+   value_format: "0.000,\" K\""
+   sql:  ${l_totalprice} ;;
+   }
+
+
+  measure: test {
+    label: "test"
+    description: "Total Sales Value in USD"
+    type: sum
+    sql: ${l_totalprice} ;;
+    value_format_name: usd
+      html:
+    {% if  _user_attributes['custom_locale_format_currency'] =='$#,##0.0000' %}
+    {{ number_format_1._rendered_value }}
+    {% else %}
+    {{ rendered_value }}
+    {% endif %};;
+  }
+
+
+
+
+
 
   dimension: l_availqty {
     type: number

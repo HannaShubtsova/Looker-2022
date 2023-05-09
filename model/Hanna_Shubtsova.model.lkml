@@ -9,6 +9,8 @@ datagroup: myfirstproject-akulbi_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+
+
 persist_with: myfirstproject-akulbi_default_datagroup
 
 explore: f_lineitems {
@@ -39,5 +41,3 @@ explore: f_lineitems {
     relationship: many_to_one
   }
 }
-
-explore: test_pdt {}
