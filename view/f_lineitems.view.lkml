@@ -17,6 +17,12 @@ view: f_lineitems {
    sql:  ${l_totalprice} ;;
    }
 
+  measure: number_format_2 {
+    type: sum
+    hidden: no
+    value_format: "0.000,,\" M\""
+    sql:  ${l_totalprice} ;;
+  }
 
   measure: test {
     label: "test"
@@ -25,8 +31,10 @@ view: f_lineitems {
     sql: ${l_totalprice} ;;
     value_format_name: usd
       html:
-    {% if  _user_attributes['custom_locale_format_currency'] =='$#,##0.0000' %}
+    {% if  _user_attributes['custom_locale_format_currency'] =='formatoption1' %}
     {{ number_format_1._rendered_value }}
+    {% elsif  _user_attributes['custom_locale_format_currency'] =='formatoption2' %}
+    {{ number_format_2._rendered_value }}
     {% else %}
     {{ rendered_value }}
     {% endif %};;
