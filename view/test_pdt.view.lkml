@@ -5,7 +5,7 @@ view: test_pdt {
    derived_table: {
      sql:  SELECT L_PARTKEY  FROM  DATA_MART.F_LINEITEMS ;;
 
-    #sql_trigger_value: SELECT CURRENT_DATE ;;
+    sql_trigger_value: SELECT CURRENT_DATE ;;
    }
 #
 
