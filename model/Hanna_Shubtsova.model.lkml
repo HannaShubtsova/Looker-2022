@@ -9,7 +9,7 @@ datagroup: group1 {
   max_cache_age: "1 hour"
 }
 
-
+explore: test_pdt {}
 
 persist_with: group1
 
